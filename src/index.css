@@ -10,3 +10,41 @@ body {
   color: #E1E1E6;
   font-family: 'Roboto', sans-serif;
 }
+
+.chat_header_info .ball {
+  background-color: #00B37E;
+  aspect-ratio: 1;
+  width: 8px;
+  border-radius: 100%;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+.message_currentUser {
+  justify-content: right;
+  align-items: center;
+}
+
+.chat_body_input {
+  position: relative;
+  margin: 5%;
+}
+
+.icon_send {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.chat_body_input_input {
+  width: 100%;
+}
