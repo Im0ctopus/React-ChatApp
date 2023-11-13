@@ -48,3 +48,105 @@ body {
 .chat_body_input_input {
   width: 100%;
 }
+
+.login form {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  gap: 20px;
+}
+
+.login button {
+  background-color: #282843;
+  padding: 10px 40px 10px 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  color: #E1E1E6;
+  transition: all .3s linear;
+}
+
+.login button:hover {
+  background-color: #ff7a97;
+}
+
+.login_select_select {
+  position: relative;
+  cursor: pointer;
+  background-color: #282843;
+  padding: 10px 10px 10px 10px;
+  border-radius: 999px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 80px;
+}
+
+.login_select_select_icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.login_select {
+  position: relative;
+}
+
+.login_select_options {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: -120px;
+  top: 0px;
+  animation: fadeIn .3s linear, slideIn .3s linear;
+  background-color: #282843;
+  border-radius: 9px;
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-35px);
+  }
+
+  to {
+    transform: translate(0px);
+  }
+}
+
+.option {
+  padding: 10px 40px 10px 10px;
+  border-radius: 9px;
+}
+
+.option:hover {
+  background-color: #ff7a97;
+  cursor: pointer;
+}

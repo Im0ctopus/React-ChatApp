@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { AiOutlineClose, AiOutlineSend } from 'react-icons/ai'
+import { MdArrowDropDown } from 'react-icons/md'
 
 function App() {
 
@@ -27,8 +28,10 @@ function App() {
   ]);
   const [currentUser, setCurrentUser] = useState();
   const [receiver, setReceiver] = useState();
-  const loginRef = useRef();
   const textRef = useRef();
+  const [showLogin, setShowLogin] = useState(false);
+  const contacts = ['Ric', 'Fazers'];
+  const [select, setSelect] = useState('Ric');
 
   useEffect(() => {
     localStorage.setItem('Messages', JSON.stringify(messages));
@@ -66,8 +69,8 @@ function App() {
 
   function handleLogin() {
     event.preventDefault();
-    setCurrentUser(loginRef.current.value);
-    setReceiver(loginRef.current.value == 'Ric' ? 'Fazers' : 'Ric')
+    setCurrentUser(select);
+    setReceiver(select == 'Ric' ? 'Fazers' : 'Ric')
   }
 
   function handleExit() {
@@ -75,15 +78,23 @@ function App() {
     setReceiver();
   }
 
+  function handleSelect(value) {
+    setShowLogin(false);
+    setSelect(value);
+  }
+
   return (
     <>
       {currentUser ? <></> : <div className="login">
-        <div className="login_title"></div>
         <form onSubmit={(e) => handleLogin(e)}>
-          <select ref={loginRef} name="" id="">
-            <option value="Ric">Ric</option>
-            <option value="Fazers"></option>
-          </select>
+          <div className="login_select">
+            <p onClick={(e) => setShowLogin(!showLogin)} className='login_select_select'>{select} <span><MdArrowDropDown className='login_select_select_icon' size={'30px'} /></span> </p>
+            <div className={`${showLogin ? 'show' : ''} login_select_options`}>
+              {contacts.map((contact, index) => (
+                <p className='option' key={index} onClick={(e) => handleSelect(contact)}>{contact}</p>
+              ))}
+            </div>
+          </div>
           <button>Login</button>
         </form>
       </div>}
