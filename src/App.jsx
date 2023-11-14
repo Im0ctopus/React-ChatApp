@@ -23,7 +23,7 @@ function App() {
       year: '2023',
       hours: '12',
       minutes: '45',
-      text: 'yeah idk'
+      text: 'Ok'
     },
   ]);
   const [currentUser, setCurrentUser] = useState();
@@ -34,13 +34,19 @@ function App() {
   const [select, setSelect] = useState('Ric');
 
   useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
     localStorage.setItem('Messages', JSON.stringify(messages));
   }, [messages]);
 
   useMemo(() => {
+    window.scrollTo(0, document.body.scrollHeight);
     const savedMessages = JSON.parse(localStorage.getItem('Messages'));
     if (savedMessages) setMessages(savedMessages);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, [currentUser]);
 
   function MessagesLoader() {
     return (
@@ -111,17 +117,16 @@ function App() {
             </div>
           </div>
           <div className="chat_header_exit">
-            <AiOutlineClose onClick={handleExit} size={'20px'} />
+            <AiOutlineClose className='chat_header_exit_close' onClick={handleExit} size={'20px'} />
           </div>
         </div>
         <div className="chat_body">
-          <div className="chat_body_date"></div>
           <div className="chat_body_messages">
             <MessagesLoader />
           </div>
           <form onSubmit={handleNewMessage} className="chat_body_input">
             <input ref={textRef} className='chat_body_input_input' type="text" placeholder='Type your message here' />
-            <AiOutlineSend className='icon_send' size={'22px'} />
+            <AiOutlineSend onClick={handleNewMessage} className='icon_send' size={'22px'} />
           </form>
         </div>
       </div> : <></>}
